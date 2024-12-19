@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -109,7 +109,9 @@ export function ItemCard({ item, type }: { item: Stay | Travel | Food; type: "st
           </div>
         </CardContent>
       </Card>
-      <ItemCardModal type={type} vendor={item} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Suspense fallback={<></>}>
+        <ItemCardModal type={type} vendor={item} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </Suspense>
     </>
   );
 }

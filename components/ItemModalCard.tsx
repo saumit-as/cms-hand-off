@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Divide, StarIcon } from "lucide-react";
 import { CartItem, Food, Stay, Travel } from "@/types";
 import { ImageCarousel } from "./ImageCarousel";
-import { useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import { CartContext } from "@/context/CartContext";
 import ItemModalForm from "./ItemModalForm";
 import { DialogDescription } from "@radix-ui/react-dialog";
@@ -163,7 +163,7 @@ export function ItemCardModal({ type, vendor, isOpen, onClose }: ItemCardModalPr
           </div>
         ) : (
           <div>
-            {showForm && <ItemModalForm vendorType={type} item={cartItem} onFormClose={onClose} setShowForm={setShowForm} />}
+            <Suspense fallback={<></>}>{showForm && <ItemModalForm vendorType={type} item={cartItem} onFormClose={onClose} setShowForm={setShowForm} />}</Suspense>
             {/* {!setShowForm && <ItemModalForm vendorType="travel" item={cartItem} onClose={onClose} setShowForm={setShowForm} />}
             {!setShowForm && <ItemModalForm vendorType="food" item={cartItem} onClose={onClose} setShowForm={setShowForm} />} */}
           </div>

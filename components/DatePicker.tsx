@@ -62,7 +62,7 @@ export const DatePicker = ({ onChange, placeholder = "Select date", value, isDat
               if (date) onChange(date, true);
               if (onDateSelect) onDateSelect();
             }}
-            initialFocus={!value}
+            // initialFocus={!value}
             disabled={(date) => dateRange(date)}
           />
         </PopoverContent>
